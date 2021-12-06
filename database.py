@@ -18,3 +18,6 @@ class Database(meta=Singleton):
 
     def __get_database_processed_images(self):
         return self.__client["Recebimento"]
+
+    def insert_processed_images(self, data) -> None:
+        self.__get_database_processed_images()["recebimento"].insert_one(data)
