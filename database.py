@@ -1,0 +1,20 @@
+from utils.singleton import Singleton
+
+from config import DevelopmentConfig
+
+from pymongo import MongoClient, errors
+
+
+class Database(meta=Singleton):
+    def __init__(self) -> None:
+
+        try:
+            self.__client = MongoClient(
+                DevelopmentConfig.DATABASE_URI,
+                serverSelectionTimeoutMS=DevelopmentConfig.TIME_OUT,
+            )
+        except errors.ServerSelectionTimeoutError as err:
+            raise ("pymongo ERROR:", err)
+
+    def __get_database_processed_images(self):
+        return self.__client["Recebimento"]
