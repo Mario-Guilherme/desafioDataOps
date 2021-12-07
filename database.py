@@ -5,7 +5,7 @@ from config import DevelopmentConfig
 from pymongo import MongoClient, errors
 
 
-class Database(meta=Singleton):
+class Database(metaclass=Singleton):
     def __init__(self) -> None:
 
         try:
