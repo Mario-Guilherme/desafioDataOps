@@ -23,6 +23,9 @@ class Database(metaclass=Singleton):
         self.__get_database_processed_images()["recebimento"].insert_one(data)
 
     def count_situacao_cadastral_ativa(self):
-        return self.__get_database_estabelecimento()["recebimento"].count_documents({"SITUACAO_CADASTRAL": "02"})
-        
+        return self.__get_database_estabelecimento()["recebimento"].count_documents(
+            {"SITUACAO_CADASTRAL": "02"}
+        )
 
+    def count_all_situacao_cadastral(self):
+        return self.__get_database_estabelecimento()["recebimento"].count_documents({})
