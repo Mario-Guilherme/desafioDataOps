@@ -22,7 +22,7 @@ class Database(metaclass=Singleton):
     def insert_estabelecimento(self, data) -> None:
         self.__get_database_processed_images()["recebimento"].insert_one(data)
 
-    def query_situacao_cadastral_ativa(self):
-        return self.__get_database_estabelecimento()["recebimento"].find(
-            {"SITUACAO_CADASTRAL": "02"}
-        )
+    def count_situacao_cadastral_ativa(self):
+        return self.__get_database_estabelecimento()["recebimento"].count_documents({"SITUACAO_CADASTRAL": "02"})
+        
+
