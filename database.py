@@ -1,4 +1,3 @@
-import pymongo
 from utils.singleton import Singleton
 
 from config import DevelopmentConfig
