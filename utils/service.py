@@ -63,12 +63,18 @@ class DataService:
         )
         return df_awnser
 
-    def create_csv(self) -> None:
-        print("Criando Csv")
+    def create_file(self) -> None:
+        print("criando arquivo")
         df_anwser = self.create_dataframe_answer()
+        self.create_csv(df_anwser)
+        self.create_excel(df_anwser)
+
+    @staticmethod
+    def create_csv(df_anwser: pd.DataFrame) -> None:
+        print("Criando Csv")
         df_anwser.to_csv("resposta.csv", index=False)
 
-    def create_excel(self) -> None:
+    @staticmethod
+    def create_excel(df_anwser: pd.DataFrame) -> None:
         print("Criando Excel")
-        df_anwser = self.create_dataframe_answer()
         df_anwser.to_csv("resposta.xlsx", sheet_name="anwser")
