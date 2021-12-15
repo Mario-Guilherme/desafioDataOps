@@ -17,3 +17,8 @@ class DataService:
         actives = self.database.query_situacao_cadastral_ativa()
         all = self.database.query_all_situacao_cadastral()
         return round(actives / all, 4)
+
+    def transform_to_dataframe(self) -> pd.DataFrame:
+        list_restaurant = list(self.database.query_restaurante())
+        df_restaurnt = pd.DataFrame(list_restaurant)
+        return df_restaurnt
