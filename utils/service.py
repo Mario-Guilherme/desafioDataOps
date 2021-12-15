@@ -60,3 +60,7 @@ class DataService:
     def create_csv(self) -> None:
         df_anwser = self.create_dataframe_answer()
         df_anwser.to_csv("resposta.csv", index=False)
+
+    def create_excel(self) -> None:
+        df_anwser = self.create_dataframe_answer()
+        df_anwser.to_csv("resposta.xlsx", sheet_name="anwser")
