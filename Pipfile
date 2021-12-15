@@ -10,6 +10,7 @@ pandas = "*"
 pycep-correios = "*"
 geopy = "*"
 dask = "*"
+openpyxl = "*"
 
 [dev-packages]
 
