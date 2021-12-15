@@ -77,4 +77,6 @@ class DataService:
     @staticmethod
     def create_excel(df_anwser: pd.DataFrame) -> None:
         print("Criando Excel")
-        df_anwser.to_csv("resposta.xlsx", sheet_name="anwser")
+        with pd.ExcelWriter("resposta.xlsx", engine="openpyxl") as writer:
+            df_anwser.to_excel(writer, sheet_name="anwser")
+            writer.save()
