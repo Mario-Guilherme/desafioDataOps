@@ -22,3 +22,10 @@ class DataService:
         list_restaurant = list(self.database.query_restaurante())
         df_restaurnt = pd.DataFrame(list_restaurant)
         return df_restaurnt
+
+    def transform_to_datetime(self) -> pd.DataFrame:
+        df_date = self.transform_to_dataframe()
+        df_date["DATA_DE_INICIO_ATIVIDADE"] = df_date["DATA_DE_INICIO_ATIVIDADE"].apply(
+            lambda x: datetime.strptime(str(x), "%Y%m%d")
+        )
+        return df_date
