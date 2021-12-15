@@ -45,3 +45,14 @@ class DataService:
         ].count()
         dict_date = df_groupy_date.to_dict()["CNAE_FISCAL_PRINCIPAL"]
         return dict_date
+
+    def create_dataframe_answer(self) -> pd.DataFrame:
+        porcent_cadastral = self.porcent_situation_cadastral()
+        restaurant_year = self.group_by_year()
+        df_awnser = pd.DataFrame(
+            {
+                "Empresas Ativas": porcent_cadastral,
+                "Empresas abertas por ano": restaurant_year,
+            }
+        )
+        return df_awnser
