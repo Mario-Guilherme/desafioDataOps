@@ -36,3 +36,12 @@ class DataService:
             lambda x: x.strftime("%Y")
         )
         return df_date
+
+    def group_by_year(self) -> Dict[str, int]:
+        df_date = self.create_columns_year()
+        df_date_clean = CleanData().clean_year(df_date=df_date)
+        df_groupy_date = df_date_clean.groupby(["ANO_INICIO_ATIVIDADE"])[
+            ["CNAE_FISCAL_PRINCIPAL"]
+        ].count()
+        dict_date = df_groupy_date.to_dict()["CNAE_FISCAL_PRINCIPAL"]
+        return dict_date
