@@ -6,6 +6,10 @@ name = "pypi"
 [packages]
 pymongo = "*"
 pre-commit = "*"
+pandas = "*"
+pycep-correios = "*"
+geopy = "*"
+dask = "*"
 
 [dev-packages]
 
