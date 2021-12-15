@@ -56,3 +56,7 @@ class DataService:
             }
         )
         return df_awnser
+
+    def create_csv(self) -> None:
+        df_anwser = self.create_dataframe_answer()
+        df_anwser.to_csv("resposta.csv", index=False)
