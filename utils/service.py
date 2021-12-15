@@ -29,3 +29,10 @@ class DataService:
             lambda x: datetime.strptime(str(x), "%Y%m%d")
         )
         return df_date
+
+    def create_column_year(self) -> pd.DataFrame:
+        df_date = self.transform_to_datetime()
+        df_date["ANO_INICIO_ATIVIDADE"] = df_date["DATA_DE_INICIO_ATIVIDADE"].apply(
+            lambda x: x.strftime("%Y")
+        )
+        return df_date
