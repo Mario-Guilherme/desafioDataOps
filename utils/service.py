@@ -14,8 +14,8 @@ class DataService:
         self.database = database
 
     def porcent_situation_cadastral(self) -> float:
-        actives = self.database.query_situacao_cadastral_ativa()
-        all = self.database.query_all_situacao_cadastral()
+        actives = self.database.count_situacao_cadastral_ativa()
+        all = self.database.count_all_situacao_cadastral()
         return round(actives / all, 4)
 
     def transform_to_dataframe(self) -> pd.DataFrame:
@@ -38,7 +38,7 @@ class DataService:
         return df_date
 
     def group_by_year(self) -> Dict[str, int]:
-        df_date = self.create_columns_year()
+        df_date = self.create_column_year()
         df_date_clean = CleanData().clean_year(df_date=df_date)
         df_groupy_date = df_date_clean.groupby(["ANO_INICIO_ATIVIDADE"])[
             ["CNAE_FISCAL_PRINCIPAL"]
